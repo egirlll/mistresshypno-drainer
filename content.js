@@ -497,14 +497,21 @@ function spawnImage() {
   if (imageSpawningPaused) return;
 
   const imageServiceUrl = `${IMAGE_SERVICE}/api/random-image`;
+  console.log("🖼️ Attempting to fetch image from:", imageServiceUrl);
 
   fetch(imageServiceUrl)
-    .then(r => r.json())
+    .then(r => {
+      console.log("🖼️ Fetch response:", r.status, r.statusText);
+      return r.json();
+    })
     .then(data => {
+      console.log("🖼️ Image data received:", data);
       if (imageSpawningPaused) return;
 
       const img = document.createElement("img");
       const fullUrl = data.url.startsWith('http') ? data.url : IMAGE_SERVICE + data.url;
+      console.log("🖼️ Loading image URL:", fullUrl);
+      
       img.src = fullUrl;
       img.className = "spawned-image";
       img.style.position = "fixed";
@@ -522,6 +529,9 @@ function spawnImage() {
       img.style.left = pos.left + "px";
       img.style.top = pos.top + "px";
 
+      img.onload = () => console.log("🖼️ Image loaded successfully:", fullUrl);
+      img.onerror = (e) => console.error("🖼️ Image load error:", e, fullUrl);
+
       const existing = document.querySelectorAll('.spawned-image');
       if (existing.length >= 50) {
         const victim = existing[Math.floor(Math.random() * existing.length)];
@@ -529,8 +539,12 @@ function spawnImage() {
       }
 
       document.body.appendChild(img);
+      console.log("🖼️ Image element added to DOM");
     })
-    .catch(e => console.error("Image fetch error:", e));
+    .catch(e => {
+      console.error("🖼️ Image fetch error:", e);
+      console.error("🖼️ Failed URL:", imageServiceUrl);
+    });
 }
 
 // Floating text prompts
