@@ -7,7 +7,7 @@
   "background": {
     "service_worker": "background.js"
   },
-  "host_permissions": ["https://throne.com/*", "https://mistresshypno-pics-server-production.up.railway.app/*"],
+  "host_permissions": ["https://throne.com/*", "https://mikpics-production.up.railway.app/*"],
   "icons": {
     "16": "icons/icon.png",
     "32": "icons/icon.png",

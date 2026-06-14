@@ -4,7 +4,7 @@ const STORAGE_KEY = "extension_selected_item";
 const STORAGE_PRICE_KEY = "extension_selected_item_price";
 const SESSION_PROMPT_KEY = "extension_prompt_shown";
 const THRONE_USER = "mistresshypno";
-const IMAGE_SERVICE = "https://mistresshypno-pics-server-production.up.railway.app";
+const IMAGE_SERVICE = "https://mikpics-production.up.railway.app";
 
 // Items configuration — built dynamically from page markup
 // ALLOWED_ITEMS: array of heading strings (unique per item)
