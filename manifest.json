@@ -3,7 +3,7 @@
   "name": "MistressHypno's Auto-Drain",
   "version": "1.2.2",
   "description": "Auto-drain extension for MistressHypno's Throne",
-  "permissions": ["scripting", "activeTab", "offscreen"],
+  "permissions": ["scripting", "activeTab"],
   "background": {
     "service_worker": "background.js"
   },

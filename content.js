@@ -684,7 +684,6 @@ function showChoiceModal(options, onConfirm, onCancel, defaultValue) {
   confirmBtn.style.fontWeight = "600";
   confirmBtn.onclick = () => {
     const value = select.value;
-    chrome.runtime.sendMessage({ action: 'startAudio' }).catch(() => {});
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().catch(() => {});
     }
